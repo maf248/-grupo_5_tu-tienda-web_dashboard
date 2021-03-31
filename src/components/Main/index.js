@@ -26,7 +26,6 @@ class Main extends Component {
 		fetch('http://localhost:3000/api/products')
 			.then(res => res.json())
 			.then(products => {
-				console.log(products)
 				this.setState({
 					totalProducts: products.data.length,
 					dataProducts: [...products.data]
@@ -39,7 +38,6 @@ class Main extends Component {
 			fetch('http://localhost:3000/api/users')
 			.then(res => res.json())
 			.then(users => {
-				console.log(users)
 				this.setState({
 					totalUsers: users.data.length,
 					dataUsers: [...users.data]
@@ -48,17 +46,19 @@ class Main extends Component {
 			.catch((e) => {
 				console.log(e);
 			})
+			
 	}
 	componentDidUpdate () {
-		console.log('Me acabo de actualizar');
+
 	}
 
-
+	
 
 
     render () {
 		return (
 			<div id="content-wrapper" className="d-flex flex-column">
+
 	
 				<div id="content">
 	
@@ -72,9 +72,18 @@ class Main extends Component {
 						/>
 						<div className="row">
 							{/* Cards - prueba de childrens */}
-							
+
+							{console.log(this.state.dataProducts)}
+
 							<Card
-								title="Last product in Data Dase"
+								title={this.state.dataProducts.map((product, index) => {
+
+										if (product.id === this.state.dataProducts.length) {
+										return product.name
+										}
+										return ""
+									} 
+								)}
 							>
 								<div className="text-center">
 									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={dummy} alt="dummy" />
