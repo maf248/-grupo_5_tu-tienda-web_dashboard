@@ -14,19 +14,34 @@ class Main extends Component {
 	constructor () {
 		super();
 		this.state = {
-			total: 0,
-			data: []
+			totalProducts: 0,
+			dataProducts: [],
+			totalUsers: 0,
+			dataUsers: []
 		}
 	}
 
 	componentDidMount () {
-		console.log('Me acabo de renderizar');
-		fetch('http://localhost:3001/api/all')
+
+		fetch('http://localhost:5000/api/products')
 			.then(res => res.json())
-			.then(notas => {
+			.then(products => {
 				this.setState({
-					total: notas.total,
-					data: notas.data
+					totalProducts: products.data.length,
+					dataProducts: [...products.data]
+				})
+			})
+			.catch((e) => {
+				console.log(e);
+			})
+
+			fetch('http://localhost:5000/api/users')
+			.then(res => res.json())
+			.then(users => {
+				console.log(users)
+				this.setState({
+					totalUsers: users.data.length,
+					dataUsers: [...users.data]
 				})
 			})
 			.catch((e) => {
@@ -50,9 +65,9 @@ class Main extends Component {
 
 					<div className="container-fluid">
 						<Metrics 
-							title="App notitas"
-							total={this.state.total}
-
+							title="Tu Tienda Web Dashboard"
+							totalProducts={this.state.totalProducts}
+							totalUsers={this.state.totalUsers}
 						/>
 						<div className="row">
 							{/* Cards - prueba de childrens */}
@@ -82,7 +97,7 @@ class Main extends Component {
 							
 						</div>
 						<Table 
-							data={this.state.data}
+							data={this.state.dataProducts}
 						/>
 					</div>
 				</div>
