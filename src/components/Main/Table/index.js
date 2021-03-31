@@ -15,7 +15,7 @@ const Table = ({data}) => {
 									<th>Titulo</th>
 									<th>Descripción</th>
 									<th>Secciones Web</th>
-									<th>Precio</th>
+									<th>Precios</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -25,13 +25,27 @@ const Table = ({data}) => {
 											<td>{product.id}</td>
 											<td>{product.name}</td>
 											<td>{product.subtitle_banner}</td>
-											<td>{product.Categories.map(
-												category => {
-													return category.web_sections}
+											<td>{product.Categories.map((category, index) => {
+													if (index === 0) {
+														return `${category.web_sections} `
+													} 
+													else if (index < product.Categories.length - 1) {
+														return `, ${category.web_sections} `
+													} else {
+														return `y ${category.web_sections}`
+													}
+												}
 											)}</td>
-											<td>{product.Categories.map(
-												category => {
-													return category.price}
+											<td>{product.Categories.map((category, index) => {
+													if (index === 0) {
+														return `$ ${category.price} `
+													} 
+													else if (index < product.Categories.length - 1) {
+														return `, $ ${category.price} `
+													} else {
+														return `y $ ${category.price}`
+													}
+												}
 											)}</td>
 										</tr>
 									))

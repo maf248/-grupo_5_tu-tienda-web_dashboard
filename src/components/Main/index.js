@@ -23,9 +23,10 @@ class Main extends Component {
 
 	componentDidMount () {
 
-		fetch('http://localhost:5000/api/products')
+		fetch('http://localhost:3000/api/products')
 			.then(res => res.json())
 			.then(products => {
+				console.log(products)
 				this.setState({
 					totalProducts: products.data.length,
 					dataProducts: [...products.data]
@@ -35,7 +36,7 @@ class Main extends Component {
 				console.log(e);
 			})
 
-			fetch('http://localhost:5000/api/users')
+			fetch('http://localhost:3000/api/users')
 			.then(res => res.json())
 			.then(users => {
 				console.log(users)
