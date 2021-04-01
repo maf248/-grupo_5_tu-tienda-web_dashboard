@@ -73,8 +73,6 @@ class Main extends Component {
 						<div className="row">
 							{/* Cards - prueba de childrens */}
 
-							{console.log(this.state.dataProducts)}
-
 							<Card
 								title={this.state.dataProducts.map((product, index) => {
 
@@ -88,7 +86,22 @@ class Main extends Component {
 								<div className="text-center">
 									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={dummy} alt="dummy" />
 								</div>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa exercitationem ratione?</p>
+								<h3>{this.state.dataProducts.map((product, index) => {
+
+										if (product.id === this.state.dataProducts.length) {
+										return product.title_banner
+										}
+										return ""
+									} 
+								)}</h3>
+								<p>{this.state.dataProducts.map((product, index) => {
+
+										if (product.id === this.state.dataProducts.length) {
+										return product.subtitle_banner
+										}
+										return ""
+									} 
+								)}</p>
 								<a target="_blank" rel="nofollow" href="/">View product detail</a>
 							</Card>
 	
