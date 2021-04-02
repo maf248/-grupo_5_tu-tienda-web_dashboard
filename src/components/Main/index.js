@@ -7,7 +7,7 @@ import Header from './Header';
 import Metrics from './Metrics';
 
 /* Assets */
-import dummy from './assets/images/product_dummy.svg';
+// import dummy from './assets/images/product_dummy.svg';
 
 
 class Main extends Component {
@@ -27,13 +27,13 @@ class Main extends Component {
 		fetch('http://localhost:3000/api/products')
 			.then(res => res.json())
 			.then(products => {
-				const lastProduct = products.data.pop()
+				var productsWhole = products;
+				const lastProduct = productsWhole.data.pop()
 				this.setState({
 					totalProducts: products.data.length,
-					dataProducts: [...products.data],
+					dataProducts: [...products.data, {...lastProduct}],
 					lastProduct: {...lastProduct}
 				})
-				console.log(this.state.lastProduct)
 				
 			})
 			.catch((e) => {
@@ -83,7 +83,7 @@ class Main extends Component {
 								title={this.state.lastProduct.name}
 							>
 								<div className="text-center">
-									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={dummy} alt="dummy" />
+									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
 								</div>
 								<h3>{this.state.lastProduct.title_banner}</h3>
 								<p>{this.state.lastProduct.subtitle_banner}</p>

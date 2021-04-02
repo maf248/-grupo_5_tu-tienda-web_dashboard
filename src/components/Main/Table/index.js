@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Table = ({data}) => {
-
+	
     return (
         <>
             <h1 className="h3 mb-2 text-gray-800">All the products in the Database</h1>
@@ -20,7 +20,7 @@ const Table = ({data}) => {
 								</tr>
 							</thead>
 							<tbody>
-								{
+								{ 
 									data.map((product, i) => (
 										<tr key={i}>
 											<td>{product.id}</td>
@@ -69,6 +69,7 @@ const Table = ({data}) => {
 			</div>
         </>
     );
+	
 }
 
 export default Table;
