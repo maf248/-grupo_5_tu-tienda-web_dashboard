@@ -16,6 +16,7 @@ class Main extends Component {
 		this.state = {
 			totalProducts: 0,
 			dataProducts: [],
+			lastProduct: {},
 			totalUsers: 0,
 			dataUsers: []
 		}
@@ -26,10 +27,14 @@ class Main extends Component {
 		fetch('http://localhost:3000/api/products')
 			.then(res => res.json())
 			.then(products => {
+				const lastProduct = products.data.pop()
 				this.setState({
 					totalProducts: products.data.length,
-					dataProducts: [...products.data]
+					dataProducts: [...products.data],
+					lastProduct: {...lastProduct}
 				})
+				console.log(this.state.lastProduct)
+				
 			})
 			.catch((e) => {
 				console.log(e);
@@ -46,6 +51,7 @@ class Main extends Component {
 			.catch((e) => {
 				console.log(e);
 			})
+			
 			
 	}
 	componentDidUpdate () {
@@ -74,35 +80,14 @@ class Main extends Component {
 							{/* Cards - prueba de childrens */}
 
 							<Card
-								title={this.state.dataProducts.map((product, index) => {
-
-										if (product.id === this.state.dataProducts.length) {
-										return product.name
-										}
-										return ""
-									} 
-								)}
+								title={this.state.lastProduct.name}
 							>
 								<div className="text-center">
 									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={dummy} alt="dummy" />
 								</div>
-								<h3>{this.state.dataProducts.map((product, index) => {
-
-										if (product.id === this.state.dataProducts.length) {
-										return product.title_banner
-										}
-										return ""
-									} 
-								)}</h3>
-								<p>{this.state.dataProducts.map((product, index) => {
-
-										if (product.id === this.state.dataProducts.length) {
-										return product.subtitle_banner
-										}
-										return ""
-									} 
-								)}</p>
-								<a target="_blank" rel="nofollow" href="/">View product detail</a>
+								<h3>{this.state.lastProduct.title_banner}</h3>
+								<p>{this.state.lastProduct.subtitle_banner}</p>
+								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`}>View product detail</a>
 							</Card>
 	
 							<Card 

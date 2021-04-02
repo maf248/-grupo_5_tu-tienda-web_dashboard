@@ -24,7 +24,7 @@ const Table = ({data}) => {
 									data.map((product, i) => (
 										<tr key={i}>
 											<td>{product.id}</td>
-											<td>{product.name}</td>
+											<td><a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${product.id}`}>{product.name}</a></td>
 											<td>{product.subtitle_banner}</td>
 											<td>{product.Categories.map((category, index) => {
 													if (index === 0) {
