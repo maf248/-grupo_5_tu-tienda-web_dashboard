@@ -27,13 +27,14 @@ class Main extends Component {
 		fetch('http://localhost:3000/api/products')
 			.then(res => res.json())
 			.then(products => {
-				var productsWhole = products;
-				const lastProduct = productsWhole.data.pop()
+				const lastProduct = products.data[products.data.length - 1]
+				
 				this.setState({
-					dataProducts: [...products.data, {...lastProduct}],
-					lastProduct: {...lastProduct},				
-					totalProducts: products.data.length,	
+					totalProducts: products.data.length,
+					dataProducts: [...products.data],
+					lastProduct: {...lastProduct}
 				})
+				
 			})
 			.catch((e) => {
 				console.log(e);
