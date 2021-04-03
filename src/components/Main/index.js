@@ -30,9 +30,9 @@ class Main extends Component {
 				var productsWhole = products;
 				const lastProduct = productsWhole.data.pop()
 				this.setState({
-					totalProducts: products.data.length,
 					dataProducts: [...products.data, {...lastProduct}],
-					lastProduct: {...lastProduct},					
+					lastProduct: {...lastProduct},				
+					totalProducts: products.data.length,	
 				})
 			})
 			.catch((e) => {

@@ -136,25 +136,12 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
 
     categoriaMasContratada = Number(categoriaMasContratada[categoriaMasContratada.length-1]) 
 
-
-
-
-
-
-
-    
-
-
-
-    
-
-
+    // En la variable "categoriaMasContratada" se encuentra el numero de id de la categoría más contratada por los usuarios, lo que falta es poder traer correctamente los products para asignarle a esa variable el nombre de la categoria con ese id y luego pasarselo a la prop para que lo muestre en la página.
 
 
     return (
         <>
 
-console.log(categories)
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
 				<h1 className="h3 mb-0 text-gray-800">{title}</h1>
 			</div>
