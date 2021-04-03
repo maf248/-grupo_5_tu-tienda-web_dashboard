@@ -45,6 +45,19 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
         return null;
     })
 
+    /*---CALCULO DE GANANCIAS ACTUALES----*/
+    /*-Se suman los precios de las categorías adquiridas por los usuarios pagos-*/
+    let totalProfit = 0;
+    users.map(user => {
+        if (user.category_info != null) {
+            totalProfit += user.category_info.price
+        }
+        return totalProfit;
+    })
+
+    const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    totalProfit = `$ ${toThousand(parseInt(totalProfit))}`;
+
     return (
         <>
 
@@ -62,18 +75,25 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
                     value={totalProducts}
                 />
                 <Card 
-                    border="success"
+                    border="primary"
                     text="success"
-                    icon="fas fa-dollar-sign"
+                    icon="fas fa-chart-bar"
                     title="Producto más contratado"
                     value={productoMasContratado}
+                />
+                <Card 
+                    border="primary"
+                    text="success"
+                    icon="fas fa-chart-line"
+                    title="Categoría más contratada"
+                    value={categoriaMasContratada}
                 />
                 <Card 
                     border="success"
                     text="success"
                     icon="fas fa-dollar-sign"
-                    title="Categoría más contratada"
-                    value={categoriaMasContratada}
+                    title="Ganancias actuales"
+                    value={totalProfit}
                 />
                 <Card 
                     border="warning"
