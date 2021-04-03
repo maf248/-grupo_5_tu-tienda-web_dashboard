@@ -3,6 +3,8 @@ import Card from './Card';
 
 const Metrics = ({title, totalProducts, totalUsers, products, users, categories}) => {
     
+    /*---CALCULO DE PRODUCTO Y CATEGORIA MAS CONTRATADOS----*/
+    /*-Se obtienen los ID de productos y categorías de cada usuario en arrays-*/
     let userProducts = [];
     let userCategories = [];
     
@@ -16,16 +18,18 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
         }
         return null;
     })
-    function mostPopular(arr){
+    /*-Se obtienen los valores más repetidos de dichos arrays-*/
+    function masPopular(arr){
         return arr.sort((a,b) =>
               arr.filter(v => v===a).length
             - arr.filter(v => v===b).length
         ).pop();
     }
 
-    let productoMasContratado = mostPopular(userProducts);
-    let categoriaMasContratada = mostPopular(userCategories);
-    
+    let productoMasContratado = masPopular(userProducts);
+    let categoriaMasContratada = masPopular(userCategories);
+
+    /*-Se obtienen los nombres de producto y categoría más contratados a travez de sus id-*/
     products.map(product => {
         if (product.id === productoMasContratado) {
             productoMasContratado = product.name
@@ -34,9 +38,9 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
         if (product.Categories[0].id === categoriaMasContratada) {
             categoriaMasContratada = product.Categories[0].name;
         } else if (product.Categories[1].id === categoriaMasContratada) {
-            categoriaMasContratada = product.Categories[0].name;
+            categoriaMasContratada = product.Categories[1].name;
         } else if (product.Categories[2].id === categoriaMasContratada) {
-            categoriaMasContratada = product.Categories[0].name;
+            categoriaMasContratada = product.Categories[2].name;
         }
         return null;
     })
