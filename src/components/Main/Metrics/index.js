@@ -56,6 +56,7 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
         }
     )
 
+
     let productoMasContratado = 0
     
     let repetidos = {};
@@ -167,7 +168,7 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
                     text="success"
                     icon="fas fa-dollar-sign"
                     title="Categoría más contratada"
-                    value=""
+                    value="La concha del patoooooooooooooo"
                 />
                 <Card 
                     border="warning"
