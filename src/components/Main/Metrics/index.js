@@ -76,14 +76,14 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
                 />
                 <Card 
                     border="primary"
-                    text="success"
+                    text="primary"
                     icon="fas fa-chart-bar"
                     title="Producto más contratado"
                     value={productoMasContratado}
                 />
                 <Card 
                     border="primary"
-                    text="success"
+                    text="primary"
                     icon="fas fa-chart-line"
                     title="Categoría más contratada"
                     value={categoriaMasContratada}
