@@ -80,18 +80,18 @@ class Main extends Component {
 							{/* Cards - prueba de childrens */}
 
 							<Card
-								title={this.state.lastProduct.name}
+								title={`Último producto: ${this.state.lastProduct.name}`}
 							>
 								<div className="text-center">
 									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
 								</div>
 								<h3>{this.state.lastProduct.title_banner}</h3>
 								<p>{this.state.lastProduct.subtitle_banner}</p>
-								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`}>View product detail</a>
+								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`}>Ver detalles del producto</a>
 							</Card>
 	
 							<Card 
-								title="Categories in Data Base"
+								title="Categorías en Base de Datos"
 							>
 								<div className="row">
 									<Category />
