@@ -32,9 +32,8 @@ class Main extends Component {
 				this.setState({
 					totalProducts: products.data.length,
 					dataProducts: [...products.data, {...lastProduct}],
-					lastProduct: {...lastProduct}
+					lastProduct: {...lastProduct},					
 				})
-				
 			})
 			.catch((e) => {
 				console.log(e);
@@ -72,9 +71,11 @@ class Main extends Component {
 
 					<div className="container-fluid">
 						<Metrics 
-							title="Tu Tienda Web Dashboard"
+							title="Métricas"
 							totalProducts={this.state.totalProducts}
 							totalUsers={this.state.totalUsers}
+							products={this.state.dataProducts}
+							users= {this.state.dataUsers}
 						/>
 						<div className="row">
 							{/* Cards - prueba de childrens */}
