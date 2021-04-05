@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Card from './Card';
-import Category from './Category';
+import Product from './Product';
 import Footer from './Footer';
 import Table from './Table';
 import Header from './Header';
@@ -83,7 +83,7 @@ class Main extends Component {
 								title={`Último producto: ${this.state.lastProduct.name}`}
 							>
 								<div className="text-center">
-									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "25rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
+									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
 								</div>
 								<h3>{this.state.lastProduct.title_banner}</h3>
 								<p>{this.state.lastProduct.subtitle_banner}</p>
@@ -91,16 +91,25 @@ class Main extends Component {
 							</Card>
 	
 							<Card 
-								title="Categorías en Base de Datos"
+								title="Productos con categorías en Base de Datos"
 							>
-								<div className="row">
-									<Category />
-									<Category />
-									<Category />
-									<Category />
-									<Category />
-									<Category />
-								</div>
+							{this.state.dataProducts.map(productData => {
+								return (
+								<Product
+								border="primary"
+								text="primary"
+								image={productData.image}
+								title={productData.name}
+								id={productData.id}
+								categories={productData.Categories}
+								key={`product${productData.id}`}
+
+								>
+								</Product>)
+							})}
+								
+									
+								
 							</Card>
 							
 						</div>
