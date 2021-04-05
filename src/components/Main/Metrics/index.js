@@ -45,12 +45,14 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
         return null;
     })
 
-    /*---CALCULO DE GANANCIAS ACTUALES----*/
+    /*---CALCULO DE GANANCIAS ACTUALES Y USUARIOS SUSCRIPTOS----*/
     /*-Se suman los precios de las categorías adquiridas por los usuarios pagos-*/
     let totalProfit = 0;
+    let userSuscriptions = 0;
     users.map(user => {
         if (user.category_info != null) {
             totalProfit += user.category_info.price
+            userSuscriptions++
         }
         return totalProfit;
     })
@@ -71,7 +73,7 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
                     border="primary"
                     text="primary"
                     icon="fas fa-clipboard-list"
-                    title="Cantidad de productos"
+                    title="Productos totales"
                     value={totalProducts}
                 />
                 <Card 
@@ -96,10 +98,17 @@ const Metrics = ({title, totalProducts, totalUsers, products, users, categories}
                     value={totalProfit}
                 />
                 <Card 
+                    border="success"
+                    text="success"
+                    icon="fas fa-hand-holding-usd"
+                    title="Usuarios suscriptos"
+                    value={userSuscriptions}
+                />
+                <Card 
                     border="warning"
                     text="warning"
                     icon="fas fa-user-check"
-                    title="Cantidad de usuarios"
+                    title="Usuarios totales"
                     value={totalUsers}
                 />
 			</div>
