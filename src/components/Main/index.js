@@ -11,6 +11,9 @@ import Metrics from './Metrics';
 
 
 class Main extends Component {
+
+
+
 	constructor () {
 		super();
 		this.state = {
@@ -18,7 +21,9 @@ class Main extends Component {
 			dataProducts: [],
 			lastProduct: {},
 			totalUsers: 0,
-			dataUsers: []
+			dataUsers: [],
+			suscriptionQuantity: [],
+			nombresDeCategorias: []
 		}
 	}
 
@@ -28,24 +33,53 @@ class Main extends Component {
 			.then(res => res.json())
 			.then(products => {
 				const lastProduct = products.data[products.data.length - 1]
-				
+				let categoriesNameArr = []
+				products.data.map( product => {
+					product.Categories.map( category => {
+
+
+						
+						if (!categoriesNameArr.includes(category.name)) {						
+							categoriesNameArr.push(category.name)
+						}
+
+						return categoriesNameArr
+					})
+
+					return null
+				})
+
 				this.setState({
 					totalProducts: products.data.length,
 					dataProducts: [...products.data],
-					lastProduct: {...lastProduct}
+					lastProduct: {...lastProduct},
+					nombresDeCategorias: [...categoriesNameArr]
 				})
-				
 			})
 			.catch((e) => {
 				console.log(e);
 			})
 
-			fetch('http://localhost:3000/api/users')
+		fetch('http://localhost:3000/api/users')
 			.then(res => res.json())
 			.then(users => {
+
+					let arrayCategoriasNombres = [];
+			
+					users.data.map( user => {
+						if (user.category_info) {
+			
+							arrayCategoriasNombres.push(user.category_info.name)
+			
+						}
+						
+					})
+
+
 				this.setState({
 					totalUsers: users.data.length,
-					dataUsers: [...users.data]
+					dataUsers: [...users.data],
+					suscriptionQuantity: [...arrayCategoriasNombres]
 				})
 			})
 			.catch((e) => {
@@ -53,13 +87,21 @@ class Main extends Component {
 			})
 			
 			
+			const objetoContador = {}
+
+
+
 	}
+
+
+
 	componentDidUpdate () {
 
 	}
 
 
     render () {
+
 		return (
 			<div id="content-wrapper" className="d-flex flex-column">
 
@@ -89,7 +131,7 @@ class Main extends Component {
 								<p>{this.state.lastProduct.subtitle_banner}</p>
 								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`}>Ver detalles del producto</a>
 							</Card>
-	
+
 							<Card 
 								title="Productos con categorías en Base de Datos"
 							>
@@ -108,7 +150,13 @@ class Main extends Component {
 								</Product>)
 							})}
 								
-									
+							</Card>
+							<Card
+								title="Estadísticas de ventas"
+							>
+								<div className="text-center">
+									<i className="fas fa-dollar-sign" style={{fontSize: "100px", margin: "10px"}}></i>
+								</div>
 								
 							</Card>
 							
