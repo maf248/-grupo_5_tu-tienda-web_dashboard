@@ -22,7 +22,9 @@ class Main extends Component {
 			dataUsers: [],
 			suscriptionQuantity: [],
 			nombresDeCategorias: [],
+			nombresDeProductos: [],
 			usersPerCategory: [],
+			usersPerProduct: [],
 			totalUsersSuscriptions: 0
 		}
 	}
@@ -34,8 +36,9 @@ class Main extends Component {
 			.then(products => {
 				const lastProduct = products.data[products.data.length - 1]
 				let categoriesNameArr = []
-				
+				let productsNameArr = []
 				products.data.map( product => {
+					productsNameArr.push({[product.name] : product.id})
 					product.Categories.map( category => {
 						
 						if (!categoriesNameArr.includes(category.name)) {						
@@ -47,12 +50,13 @@ class Main extends Component {
 
 					return null
 				})
-
+				
 				this.setState({
 					totalProducts: products.data.length,
 					dataProducts: [...products.data],
 					lastProduct: {...lastProduct},
-					nombresDeCategorias: [...categoriesNameArr]
+					nombresDeCategorias: [...categoriesNameArr],
+					nombresDeProductos: [...productsNameArr]
 				})
 			})
 			.catch((e) => {
@@ -63,34 +67,49 @@ class Main extends Component {
 			.then(res => res.json())
 			.then(users => {
 
-					let arrayCategoriasNombres = [];
-			
+					let arrayCategoriasContratadas = [];
+					let arrayProductosAdquiridos = [];
+
 					users.data.map( user => {
+						if (user.product_id != null) {
+							arrayProductosAdquiridos.push(user.product_id)
+						}
 						if (user.category_info) {
-							arrayCategoriasNombres.push(user.category_info.name)
+							arrayCategoriasContratadas.push(user.category_info.name)
 						}
 						return null;
 					})
-
+					
+					/*---Se calcula cuantos usuarios suscriptos tiene cada categoría---*/
 					const usersPerCategory = []
 
 					const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 					this.state.nombresDeCategorias.map(category => {
-						let ammount = countOccurrences(arrayCategoriasNombres, category);
-						usersPerCategory.push({[category]: ammount});
+						let ammountCategory = countOccurrences(arrayCategoriasContratadas, category);
+						usersPerCategory.push({[category]: ammountCategory});
 						return null;
 					})
-
+					
+					/*---Se calcula el TOTAL de suscripciones en todas las categorías---*/
 					let totalUsersSuscriptions = 0;
 					usersPerCategory.map(category => {
 						return totalUsersSuscriptions += category[Object.keys(category)];
 					})
-					console.log(totalUsersSuscriptions)
+					/*---Se calcula cuantos usuarios poseen cada producto---*/
+					const usersPerProduct = []
+				
+					this.state.nombresDeProductos.map(product => {
+						let ammountProduct = countOccurrences(arrayProductosAdquiridos, product[Object.keys(product)]);
+						usersPerProduct.push({[Object.keys(product)]: ammountProduct});
+						return null;
+					})
+				
 
 				this.setState({
 					totalUsers: users.data.length,
 					dataUsers: [...users.data],
 					usersPerCategory: [...usersPerCategory],
+					usersPerProduct: [...usersPerProduct],
 					totalUsersSuscriptions: totalUsersSuscriptions
 				})
 			})
@@ -98,11 +117,8 @@ class Main extends Component {
 				console.log(e);
 			})
 			
-		
-
 
 	}
-
 
 
 	componentDidUpdate () {
@@ -173,7 +189,6 @@ class Main extends Component {
 										<li><h3>Total de ventas: {this.state.totalUsersSuscriptions}</h3></li>
 										<li><h3>Categorías más vendidas:</h3></li>
 										<ol>
-										
 										{this.state.usersPerCategory.map((category,i) => {
 											return (
 												<li key={i}><strong>{Object.keys(category)} :</strong> {category[Object.keys(category)]} suscripciones</li>
@@ -181,8 +196,13 @@ class Main extends Component {
 										})}
 										</ol>
 										<li><h3>Productos más vendidos:</h3></li>
-
-										
+										<ol>
+										{this.state.usersPerProduct.map((product,i) => {
+											return (
+												<li key={`producto${i}`}><strong>{Object.keys(product)} :</strong> {product[Object.keys(product)]} usuarios</li>
+											)
+										})}
+										</ol>
 									</ul>
 								</div>
 
