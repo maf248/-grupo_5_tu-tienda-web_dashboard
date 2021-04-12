@@ -80,10 +80,22 @@ class Main extends Component {
 						return null;
 					})
 					
+					/*---Funcion para contar ocurrencias de un valor en un array---*/
+					const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+
+					/*---Funcion para ORDENAR de mayor a menor las categorias y productos más vendidos---*/
+					function compare( a, b ) {
+						if ( Object.values(a) < Object.values(b) ){
+						  return 1;
+						}
+						if ( Object.values(a) > Object.values(b) ){
+						  return -1;
+						}
+						return 0;
+					  }
+					
 					/*---Se calcula cuantos usuarios suscriptos tiene cada categoría---*/
 					const usersPerCategory = []
-
-					const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 					this.state.nombresDeCategorias.map(category => {
 						let ammountCategory = countOccurrences(arrayCategoriasContratadas, category);
 						usersPerCategory.push({[category]: ammountCategory});
@@ -103,6 +115,11 @@ class Main extends Component {
 						usersPerProduct.push({[Object.keys(product)]: ammountProduct});
 						return null;
 					})
+
+					
+				/*---Se ordenan de mayor a menor los productos más vendidos y categorias más contratadas---*/ 
+				usersPerProduct.sort(compare);
+				usersPerCategory.sort(compare)
 				
 
 				this.setState({
@@ -195,7 +212,7 @@ class Main extends Component {
 											)
 										})}
 										</ol>
-										<li><h3>Productos más vendidos:</h3></li>
+										<li><h3>Productos más adquiridos:</h3></li>
 										<ol>
 										{this.state.usersPerProduct.map((product,i) => {
 											return (
