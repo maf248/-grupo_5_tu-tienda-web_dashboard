@@ -200,11 +200,11 @@ class Main extends Component {
 								<div className="text-center">
 									<i className="fas fa-dollar-sign" style={{fontSize: "100px", margin: "10px"}}></i>
 								</div>
-
+								
 								<div>
 									<ul>
-										<li><h3>Total de ventas: {this.state.totalUsersSuscriptions}</h3></li>
-										<li><h3>Categorías más vendidas:</h3></li>
+										<li><h4 style={{margin: '10px'}}>Total de ventas: {this.state.totalUsersSuscriptions}</h4></li>
+										<li><h4 style={{margin: '10px'}}>Categorías más vendidas:</h4></li>
 										<ol>
 										{this.state.usersPerCategory.map((category,i) => {
 											return (
@@ -212,7 +212,7 @@ class Main extends Component {
 											)
 										})}
 										</ol>
-										<li><h3>Productos más adquiridos:</h3></li>
+										<li><h4 style={{margin: '10px'}}>Productos más adquiridos:</h4></li>
 										<ol>
 										{this.state.usersPerProduct.map((product,i) => {
 											return (

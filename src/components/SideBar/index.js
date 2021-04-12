@@ -8,7 +8,7 @@ const SideBar = () => {
 
 			<a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div className="sidebar-brand-icon">
-					<i className="fas fa-chart-line"></i>
+					<img style={{width: "70%", margin: "10px"}} src="http://localhost:3000/logo/logo2d.png"></img>
 				</div>
 				<div className="sidebar-brand-text mx-3">Admin</div>
 			</a>
