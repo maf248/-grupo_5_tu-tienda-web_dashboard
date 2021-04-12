@@ -12,8 +12,6 @@ import Metrics from './Metrics';
 
 class Main extends Component {
 
-
-
 	constructor () {
 		super();
 		this.state = {
@@ -23,7 +21,9 @@ class Main extends Component {
 			totalUsers: 0,
 			dataUsers: [],
 			suscriptionQuantity: [],
-			nombresDeCategorias: []
+			nombresDeCategorias: [],
+			usersPerCategory: [],
+			totalUsersSuscriptions: 0
 		}
 	}
 
@@ -34,10 +34,9 @@ class Main extends Component {
 			.then(products => {
 				const lastProduct = products.data[products.data.length - 1]
 				let categoriesNameArr = []
+				
 				products.data.map( product => {
 					product.Categories.map( category => {
-
-
 						
 						if (!categoriesNameArr.includes(category.name)) {						
 							categoriesNameArr.push(category.name)
@@ -68,27 +67,31 @@ class Main extends Component {
 			
 					users.data.map( user => {
 						if (user.category_info) {
-			
 							arrayCategoriasNombres.push(user.category_info.name)
-			
 						}
 						return null;
 					})
 
-					const objetoContador = []
+					const usersPerCategory = []
 
 					const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
 					this.state.nombresDeCategorias.map(category => {
 						let ammount = countOccurrences(arrayCategoriasNombres, category);
-						objetoContador.push({[category]: ammount});
+						usersPerCategory.push({[category]: ammount});
 						return null;
 					})
-					
+
+					let totalUsersSuscriptions = 0;
+					usersPerCategory.map(category => {
+						return totalUsersSuscriptions += category[Object.keys(category)];
+					})
+					console.log(totalUsersSuscriptions)
 
 				this.setState({
 					totalUsers: users.data.length,
 					dataUsers: [...users.data],
-					usersPerCategory: [...objetoContador]
+					usersPerCategory: [...usersPerCategory],
+					totalUsersSuscriptions: totalUsersSuscriptions
 				})
 			})
 			.catch((e) => {
@@ -165,8 +168,24 @@ class Main extends Component {
 									<i className="fas fa-dollar-sign" style={{fontSize: "100px", margin: "10px"}}></i>
 								</div>
 
-								{console.log(this.state.usersPerCategory)}
-								
+								<div>
+									<ul>
+										<li><h3>Total de ventas: {this.state.totalUsersSuscriptions}</h3></li>
+										<li><h3>Categorías más vendidas:</h3></li>
+										<ol>
+										
+										{this.state.usersPerCategory.map((category,i) => {
+											return (
+												<li key={i}><strong>{Object.keys(category)} :</strong> {category[Object.keys(category)]} suscripciones</li>
+											)
+										})}
+										</ol>
+										<li><h3>Productos más vendidos:</h3></li>
+
+										
+									</ul>
+								</div>
+
 							</Card>
 							
 						</div>
