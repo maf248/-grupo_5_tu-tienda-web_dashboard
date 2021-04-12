@@ -33,6 +33,7 @@ const SideBar = () => {
 						classIcon={link.classIcon} 
 						title={link.title}
 						active={link.active}
+						url={link.url}
 					/>
 				))
 			}
