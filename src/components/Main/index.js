@@ -72,23 +72,30 @@ class Main extends Component {
 							arrayCategoriasNombres.push(user.category_info.name)
 			
 						}
-						
+						return null;
 					})
 
+					const objetoContador = []
+
+					const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+					this.state.nombresDeCategorias.map(category => {
+						let ammount = countOccurrences(arrayCategoriasNombres, category);
+						objetoContador.push({[category]: ammount});
+						return null;
+					})
+					
 
 				this.setState({
 					totalUsers: users.data.length,
 					dataUsers: [...users.data],
-					suscriptionQuantity: [...arrayCategoriasNombres]
+					usersPerCategory: [...objetoContador]
 				})
 			})
 			.catch((e) => {
 				console.log(e);
 			})
 			
-			
-			const objetoContador = {}
-
+		
 
 
 	}
@@ -157,6 +164,8 @@ class Main extends Component {
 								<div className="text-center">
 									<i className="fas fa-dollar-sign" style={{fontSize: "100px", margin: "10px"}}></i>
 								</div>
+
+								{console.log(this.state.usersPerCategory)}
 								
 							</Card>
 							
