@@ -1,18 +1,19 @@
 export const datos = [
     {
-        classIcon: "fas fa-fw fa-folder",
-        title: "Pages",
-        url: "http://localhost:3000"
+        classIcon: "fas fa-globe-americas",
+        title: "Tu tienda web - Sitio",
+        url: "http://localhost:3000",
+        target: "_blank"
     },
     {
         classIcon: "fas fa-fw fa-chart-area",
-        title: "Charts",
+        title: "Estadisticas de ventas",
         url: "/"
     },
     {
         classIcon: "fas fa-fw fa-table",
-        title: "Tables",
-        url: "/"
+        title: "Tabla de productos",
+        url: "/#table"
     },
 ]
 

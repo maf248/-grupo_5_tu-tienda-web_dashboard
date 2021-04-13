@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const Card = ({title, children, style}) => {
+const Card = ({title, children, classStyle}) => {
     return (
-        <div className={style}>						
+        <div className={classStyle}>						
 			<div className="card shadow mb-4">
 				<div className="card-header py-3">
 					<h6 className="m-0 font-weight-bold text-primary">{title}</h6>

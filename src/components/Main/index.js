@@ -166,7 +166,7 @@ class Main extends Component {
 
 							<Card
 								title={`Último producto: ${this.state.lastProduct.name}`}
-								style={"col-lg-6 mb-4"}
+								classStyle={"col-lg-6 mb-4"}
 								>	
 								<div className="text-center">
 									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
@@ -178,7 +178,7 @@ class Main extends Component {
 
 							<Card
 								title="Estadísticas de ventas"
-								style={"col-lg-6 mb-4"}
+								classStyle={"col-lg-6 mb-4"}
 							>
 								<div className="text-center">
 									<i className="fas fa-dollar-sign" style={{fontSize: "100px", margin: "10px"}}></i>
@@ -210,7 +210,7 @@ class Main extends Component {
 
 							<Card 
 								title="Productos con categorías en Base de Datos"
-								style={"col-lg-12 mb-4"}
+								classStyle={"col-lg-12 mb-4"}
 							>
 							{this.state.dataProducts.map(productData => {
 								return (
@@ -231,9 +231,11 @@ class Main extends Component {
 							
 							
 						</div>
-						<Table 
-							data={this.state.dataProducts}
-						/>
+						<div id="table">
+							<Table
+								data={this.state.dataProducts}
+							/>
+						</div>
 					</div>
 				</div>
 	

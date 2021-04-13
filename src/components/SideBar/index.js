@@ -8,7 +8,7 @@ const SideBar = () => {
 
 			<a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div className="sidebar-brand-icon">
-					<img style={{width: "70%", margin: "10px"}} src="http://localhost:3000/logo/logo2d.png"></img>
+					<img style={{width: "70%", margin: "10px"}} src="http://localhost:3000/logo/logo2d.png" alt="Logo Tu Tienda Web"></img>
 				</div>
 				<div className="sidebar-brand-text mx-3">Admin</div>
 			</a>
@@ -34,6 +34,7 @@ const SideBar = () => {
 						title={link.title}
 						active={link.active}
 						url={link.url}
+						target={link.target}
 					/>
 				))
 			}
