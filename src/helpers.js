@@ -16,5 +16,3 @@ export const datos = [
         url: "/#table"
     },
 ]
-
-export const cantidad = 6;
