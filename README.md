@@ -4,24 +4,35 @@
 
 Armado completamente en React, obtiene información mediante endpoints API del [Repositorio principal - Tu Tienda Web](https://github.com/maf248/grupo_5_tu-tienda-web).
 
-Calcula varias estadísticas y datos:
+#### Calcula varias estadísticas y datos:
+
 ○ Productos totales
+
 ○ Producto más contratado
+
 ○ Categoría más contratada
+
 ○ Ganancias mensuales actuales
+
 ○ Total usuarios con suscripción (categoría contratada)
+
 ○ Total Usuarios registrados
 
+
 ○ Último producto
+
 ○ Total de ventas
+
 ○ Top 5 categorías mas vendidas
+
 ○ Top 5 productos más adquiridos
+
 
 ○ Listado de cada producto con sus respectivas categorías
 
 ○ Tabla con todos los productos incluyendo: ID, titulo, breve descripción, categorías, secciones web y precios.
 
-#
+___________________________________________
 
 # Getting Started with Create React App
 
