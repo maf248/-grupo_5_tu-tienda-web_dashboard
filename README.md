@@ -1,4 +1,6 @@
-# Dashboard Tu Tienda Web - Panel de Administrador
+# Grupo #5 - Tu Tienda Web.
+## grupo_5_tu-tienda-web_dashboard
+### Dashboard Tu Tienda Web - Panel de Administrador
 
 Armado completamente en React, obtiene información mediante endpoints API del [Repositorio principal - Tu Tienda Web](https://github.com/maf248/grupo_5_tu-tienda-web).
 
