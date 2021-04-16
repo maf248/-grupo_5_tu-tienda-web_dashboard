@@ -120,13 +120,15 @@ class Main extends Component {
 				/*---Se ordenan de mayor a menor los productos más vendidos y categorias más contratadas---*/ 
 				usersPerProduct.sort(compare);
 				usersPerCategory.sort(compare)
-				
+				/*---Se "recortan" los TOP 5 exclusivamente---*/
+				const topProducts = usersPerProduct.slice(0,5);
+				const topCategories = usersPerCategory.slice(0,5);
 
 				this.setState({
 					totalUsers: users.data.length,
 					dataUsers: [...users.data],
-					usersPerCategory: [...usersPerCategory],
-					usersPerProduct: [...usersPerProduct],
+					usersPerCategory: [...topCategories],
+					usersPerProduct: [...topProducts],
 					totalUsersSuscriptions: totalUsersSuscriptions
 				})
 			})
