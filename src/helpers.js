@@ -6,9 +6,10 @@ export const datos = [
         target: "_blank"
     },
     {
-        classIcon: "fas fa-fw fa-chart-area",
-        title: "Estadisticas de ventas",
-        url: "/"
+        classIcon: "fas fa-plus-square",
+        title: "Crear nuevo producto",
+        url: "http://localhost:3000/products/create",
+        target: "_blank"
     },
     {
         classIcon: "fas fa-fw fa-table",

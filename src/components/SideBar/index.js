@@ -16,7 +16,7 @@ const SideBar = () => {
 			<hr className="sidebar-divider my-0" />
 
 			<Link 
-				classIcon="fas fa-fw fa-tachometer-alt"
+				classIcon="fas fa-fw fa-chart-area"
 				title="Dashboard"
 				active="active"
 			/>
