@@ -169,13 +169,14 @@ class Main extends Component {
 							<Card
 								title={`Último producto: ${this.state.lastProduct.name}`}
 								classStyle={"col-lg-6 mb-4"}
-								>	
-								<div className="text-center">
-									<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
-								</div>
-								<h3>{this.state.lastProduct.title_banner}</h3>
-								<p>{this.state.lastProduct.subtitle_banner}</p>
-								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`}>Ver detalles del producto</a>
+								>
+								<a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${this.state.lastProduct.id}`} style={{textDecoration: "none", color: "#858796"}}>	
+									<div className="text-center">
+										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`http://localhost:3000/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
+									</div>
+									<h3 style={{marginBottom: "15px"}}>{this.state.lastProduct.title_banner}</h3>
+									<h5 style={{marginBottom: "15px"}}>{this.state.lastProduct.subtitle_banner}</h5>
+								</a>
 							</Card>
 
 							<Card
@@ -211,7 +212,7 @@ class Main extends Component {
 							</Card>
 
 							<Card 
-								title="Productos con categorías en Base de Datos"
+								title="Productos y sus categorías en base de datos"
 								classStyle={"col-lg-12 mb-4"}
 							>
 							{this.state.dataProducts.map(productData => {
