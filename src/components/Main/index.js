@@ -234,9 +234,15 @@ class Main extends Component {
 							
 						</div>
 						<div id="table">
-							<Table
+						<Card
+								title={"Todos los productos en base de datos"}
+								classStyle={"col-lg-12 mb-4"}
+								>	
+								<Table
 								data={this.state.dataProducts}
 							/>
+						</Card>
+							
 						</div>
 					</div>
 				</div>

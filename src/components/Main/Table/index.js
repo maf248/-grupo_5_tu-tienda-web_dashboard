@@ -4,9 +4,6 @@ const Table = ({data}) => {
 	
     return (
         <>
-            <h1 className="h3 mb-2 text-gray-800">Todos los productos en base de datos</h1>
-			<div className="card shadow mb-4">
-				<div className="card-body">
 					<div className="table-responsive">
 						<table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
 							<thead>
@@ -65,8 +62,6 @@ const Table = ({data}) => {
 							</tbody>
 						</table>
 					</div>
-				</div>
-			</div>
         </>
     );
 	
