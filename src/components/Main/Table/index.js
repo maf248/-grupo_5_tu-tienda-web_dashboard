@@ -19,41 +19,22 @@ const Table = ({data}) => {
 							<tbody>
 								{ 
 									data.map((product, i) => (
-										<tr key={i}>
-											<td>{product.id}</td>
-											<td><a target="_blank" rel="noreferrer" href={`http://localhost:3000/products/${product.id}`}>{product.name}</a></td>
+										
+										<tr key={`product${i}`} onClick={() => window.open(`http://localhost:3000/products/${product.id}`)} style={{cursor: "pointer"}}>
+											<td><p>{product.id}</p></td>
+											<td><div><p>{product.name}</p><i className="far fa-edit" onClick={() => window.open(`http://localhost:3000/products/${product.id}/edit`)}></i></div></td>
 											<td>{product.subtitle_banner}</td>
 											<td>{product.Categories.map((category, index) => {
-													if (index === 0) {
-														return `${category.name} `
-													} 
-													else if (index < product.Categories.length - 1) {
-														return `, ${category.name} `
-													} else {
-														return `y ${category.name}`
-													}
+													return <li style={{listStyle: "none", textAlign: "center"}} key={`product${category.name}${i}`}>{category.name} </li>
 												}
 											)}</td>
 											<td>{product.Categories.map((category, index) => {
-													if (index === 0) {
-														return `${category.web_sections} `
-													} 
-													else if (index < product.Categories.length - 1) {
-														return `, ${category.web_sections} `
-													} else {
-														return `y ${category.web_sections}`
-													}
+													return <li style={{listStyle: "none", textAlign: "center"}} key={`product${category.web_sections}${i}`}>{category.web_sections} </li>
 												}
 											)}</td>
+											
 											<td>{product.Categories.map((category, index) => {
-													if (index === 0) {
-														return `$ ${category.price} `
-													} 
-													else if (index < product.Categories.length - 1) {
-														return `, $ ${category.price} `
-													} else {
-														return `y $ ${category.price}`
-													}
+													return <li style={{listStyle: "none", textAlign: "center"}} key={`product${category.price}${i}`}>$ {category.price} </li>
 												}
 											)}</td>
 										</tr>
