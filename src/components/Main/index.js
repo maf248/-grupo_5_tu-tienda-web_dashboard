@@ -31,7 +31,7 @@ class Main extends Component {
 
 	componentDidMount () {
 
-		fetch('http://grupo-5-tu-tienda-web.herokuapp.com/api/products')
+		fetch('https://grupo-5-tu-tienda-web.herokuapp.com/api/products')
 			.then(res => res.json())
 			.then(products => {
 				const lastProduct = products.data[products.data.length - 1]
@@ -63,7 +63,7 @@ class Main extends Component {
 				console.log(e);
 			})
 
-		fetch('http://grupo-5-tu-tienda-web.herokuapp.com/api/users')
+		fetch('https://grupo-5-tu-tienda-web.herokuapp.com/api/users')
 			.then(res => res.json())
 			.then(users => {
 
@@ -170,9 +170,9 @@ class Main extends Component {
 								title={`Último producto: ${this.state.lastProduct.name}`}
 								classStyle={"col-lg-6 mb-4"}
 								>
-								<a target="_blank" rel="noreferrer" href={`http://grupo-5-tu-tienda-web.herokuapp.com/products/${this.state.lastProduct.id}`} style={{textDecoration: "none", color: "#858796"}}>	
+								<a target="_blank" rel="noreferrer" href={`https://grupo-5-tu-tienda-web.herokuapp.com/products/${this.state.lastProduct.id}`} style={{textDecoration: "none", color: "#858796"}}>	
 									<div className="text-center">
-										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`http://grupo-5-tu-tienda-web.herokuapp.com/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
+										<img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "15rem"}} src={`https://grupo-5-tu-tienda-web.herokuapp.com/images/Producto-${this.state.lastProduct.id}/${this.state.lastProduct.image}`} alt="Último producto" />
 									</div>
 									<h3 style={{marginBottom: "15px"}}>{this.state.lastProduct.title_banner}</h3>
 									<h5 style={{marginBottom: "15px"}}>{this.state.lastProduct.subtitle_banner}</h5>
