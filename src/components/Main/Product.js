@@ -12,7 +12,7 @@ const Product = ({border, text, image, title, id, categories}) => {
 				<div className="card-body">
 					<div className="row no-gutters align-items-center">
                         <div className="col-auto">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "5rem"}} src={`http://localhost:3000/images/Producto-${id}/${image}`} alt="Producto" />
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: "5rem"}} src={`http://grupo-5-tu-tienda-web.herokuapp.com/images/Producto-${id}/${image}`} alt="Producto" />
 						</div>
 						<div className="col mr-2">
 							<div className={classText}>{title}</div>

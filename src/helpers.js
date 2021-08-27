@@ -2,13 +2,13 @@ export const datos = [
     {
         classIcon: "fas fa-globe-americas",
         title: "Tu tienda web - Sitio",
-        url: "http://localhost:3000",
+        url: "http://grupo-5-tu-tienda-web.herokuapp.com",
         target: "_blank"
     },
     {
         classIcon: "fas fa-plus-square",
         title: "Crear nuevo producto",
-        url: "http://localhost:3000/products/create",
+        url: "http://grupo-5-tu-tienda-web.herokuapp.com/products/create",
         target: "_blank"
     },
     {

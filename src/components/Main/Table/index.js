@@ -20,9 +20,9 @@ const Table = ({data}) => {
 								{ 
 									data.map((product, i) => (
 										
-										<tr key={`product${i}`} onClick={() => window.open(`http://localhost:3000/products/${product.id}`)} style={{cursor: "pointer"}}>
+										<tr key={`product${i}`} onClick={() => window.open(`http://grupo-5-tu-tienda-web.herokuapp.com/products/${product.id}`)} style={{cursor: "pointer"}}>
 											<td><p>{product.id}</p></td>
-											<td><div><p>{product.name}</p><i className="far fa-edit" onClick={() => window.open(`http://localhost:3000/products/${product.id}/edit`)}></i></div></td>
+											<td><div><p>{product.name}</p><i className="far fa-edit" onClick={() => window.open(`http://grupo-5-tu-tienda-web.herokuapp.com/products/${product.id}/edit`)}></i></div></td>
 											<td>{product.subtitle_banner}</td>
 											<td>{product.Categories.map((category, index) => {
 													return <li style={{listStyle: "none", textAlign: "center"}} key={`product${category.name}${i}`}>{category.name} </li>

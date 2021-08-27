@@ -8,9 +8,9 @@ const SideBar = () => {
 
 			<a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div className="sidebar-brand-icon">
-					<img style={{width: "70%", margin: "10px"}} src="http://localhost:3000/logo/logo2d.png" alt="Logo Tu Tienda Web"></img>
+					<img style={{width: "70%", margin: "10px"}} src="http://grupo-5-tu-tienda-web.herokuapp.com/logo/logo2d.png" alt="Logo Tu Tienda Web"></img>
 				</div>
-				<div className="sidebar-brand-text mx-3"><a href="http://localhost:3000/users/profile" target="_blank" style={{color: "white"}} >Admin</a></div>
+				<div className="sidebar-brand-text mx-3"><a href="http://grupo-5-tu-tienda-web.herokuapp.com/users/profile" target="_blank" style={{color: "white"}} >Admin</a></div>
 			</a>
 
 			<hr className="sidebar-divider my-0" />
