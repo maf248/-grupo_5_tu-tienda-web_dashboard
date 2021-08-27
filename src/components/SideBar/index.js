@@ -10,8 +10,12 @@ const SideBar = () => {
 				<div className="sidebar-brand-icon">
 					<img style={{width: "70%", margin: "10px"}} src="https://grupo-5-tu-tienda-web.herokuapp.com/logo/logo2d.png" alt="Logo Tu Tienda Web"></img>
 				</div>
-				<div className="sidebar-brand-text mx-3"><a href="https://grupo-5-tu-tienda-web.herokuapp.com/users/profile" target="_blank" rel="noreferrer" style={{color: "white"}} >Admin</a></div>
 			</a>
+
+			<div className="sidebar-brand-text mx-3">
+				<a href="https://grupo-5-tu-tienda-web.herokuapp.com/users/profile" target="_blank" rel="noreferrer" style={{color: "white"}} >Admin</a>
+			</div>
+			
 
 			<hr className="sidebar-divider my-0" />
 

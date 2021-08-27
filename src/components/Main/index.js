@@ -58,6 +58,7 @@ class Main extends Component {
 					nombresDeCategorias: [...categoriesNameArr],
 					nombresDeProductos: [...productsNameArr]
 				})
+				
 			})
 			.catch((e) => {
 				console.log(e);
@@ -131,6 +132,7 @@ class Main extends Component {
 					usersPerProduct: [...topProducts],
 					totalUsersSuscriptions: totalUsersSuscriptions
 				})
+				
 			})
 			.catch((e) => {
 				console.log(e);
